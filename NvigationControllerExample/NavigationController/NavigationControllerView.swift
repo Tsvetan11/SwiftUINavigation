@@ -9,27 +9,26 @@ import SwiftUI
 
 struct NavigationControllerView: View {
 
-    @ObservedObject private var coordinator: MainCoordinator
+    @StateObject private var navigationController: NavigationController = NavigationController()
     private let root: NavigationItem
 
-    init(coordinator: MainCoordinator, root: NavigationItem) {
-        self._coordinator = ObservedObject(wrappedValue: coordinator)
+    init(root: NavigationItem) {
         self.root = root
     }
 
     var body: some View {
-        NavigationStack(path: $coordinator.navigationController.navigationPath) {
+        NavigationStack(path: $navigationController.navigationPath) {
             root.getView()
                 .navigationDestination(for: NavigationItem.self) { destination in
                     destination.getView()
                 }
         }
-        .sheet(item: $coordinator.navigationController.sheet) { sheet in
+        .sheet(item: $navigationController.sheet) { sheet in
             sheet.getView()
         }
-        .fullScreenCover(item: $coordinator.navigationController.fullScreenCover) { fullScreenCover in
+        .fullScreenCover(item: $navigationController.fullScreenCover) { fullScreenCover in
             fullScreenCover.getView()
         }
-        .environmentObject(coordinator)
+        .environmentObject(navigationController)
     }
 }

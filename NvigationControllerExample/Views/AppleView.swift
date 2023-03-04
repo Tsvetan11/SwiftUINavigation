@@ -9,20 +9,20 @@ import SwiftUI
 
 struct AppleView: View {
 
-    @EnvironmentObject private var coordinator: MainCoordinator
+    @EnvironmentObject private var navigationController: NavigationController
 
     var body: some View {
         List {
             Button("Push 🍌") {
-                coordinator.didTapBanana()
+                navigationController.push(NavigationItem(content: BananaView()))
             }
 
             Button("Present 🍋") {
-                coordinator.didTapLemon()
+                navigationController.present(sheet: NavigationItem(content: LemonView()))
             }
 
             Button("Present 🫒") {
-                coordinator.didTapOlive()
+                navigationController.present(fullScreenCover: NavigationItem(content: OliveView()))
             }
         }
         .navigationTitle("🍎")

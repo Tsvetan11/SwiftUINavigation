@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F518C97229B397EF0034FD6A /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518C97129B397EF0034FD6A /* NavigationItem.swift */; };
-		F518C97529B3A58B0034FD6A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F518C97429B3A58B0034FD6A /* Coordinator.swift */; };
 		F55D000D29B3449300FEAA5D /* NvigationControllerExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D000C29B3449300FEAA5D /* NvigationControllerExampleApp.swift */; };
 		F55D001129B3449500FEAA5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55D001029B3449500FEAA5D /* Assets.xcassets */; };
 		F55D001429B3449500FEAA5D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55D001329B3449500FEAA5D /* Preview Assets.xcassets */; };
@@ -23,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		F518C97129B397EF0034FD6A /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
-		F518C97429B3A58B0034FD6A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		F55D000929B3449300FEAA5D /* NvigationControllerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NvigationControllerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55D000C29B3449300FEAA5D /* NvigationControllerExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NvigationControllerExampleApp.swift; sourceTree = "<group>"; };
 		F55D001029B3449500FEAA5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,14 +46,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F518C97329B3A50A0034FD6A /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				F518C97429B3A58B0034FD6A /* Coordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		F55D000029B3449300FEAA5D = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				F55D000C29B3449300FEAA5D /* NvigationControllerExampleApp.swift */,
-				F518C97329B3A50A0034FD6A /* Coordinator */,
 				F55D001A29B344E700FEAA5D /* NavigationController */,
 				F55D001B29B344F000FEAA5D /* Views */,
 				F55D001029B3449500FEAA5D /* Assets.xcassets */,
@@ -195,7 +184,6 @@
 			files = (
 				F55D000D29B3449300FEAA5D /* NvigationControllerExampleApp.swift in Sources */,
 				F518C97229B397EF0034FD6A /* NavigationItem.swift in Sources */,
-				F518C97529B3A58B0034FD6A /* Coordinator.swift in Sources */,
 				F55D001F29B3452000FEAA5D /* NavigationControllerView.swift in Sources */,
 				F55D001D29B3450100FEAA5D /* NavigationController.swift in Sources */,
 				F55D002129B3459500FEAA5D /* AppleView.swift in Sources */,
