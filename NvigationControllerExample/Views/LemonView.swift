@@ -9,12 +9,12 @@ import SwiftUI
 
 struct LemonView: View {
     
-    @EnvironmentObject private var navigationController: NavigationController
+    @EnvironmentObject private var coordinator: MainCoordinator
     
     var body: some View {
         List {
             Button("Dismiss") {
-                navigationController.dismissSheet()
+                coordinator.didTapLemonDismiss()
             }
         }
         .navigationTitle("🍋")

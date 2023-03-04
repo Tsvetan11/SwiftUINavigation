@@ -10,18 +10,19 @@ import SwiftUI
 @main
 struct NvigationControllerExampleApp: App {
 
-    private let pageFactory = PageFactory()
-    private let sheetFactory = SheetFactory()
-    private let fullScreenCoverFactory = FullScreenCoverFactory()
+    @StateObject private var navigationController: NavigationController
+    @StateObject private var mainCoordinator: MainCoordinator
+
+    init() {
+        let navigationController = NavigationController()
+
+        self._navigationController = StateObject(wrappedValue: navigationController)
+        self._mainCoordinator = StateObject(wrappedValue: MainCoordinator(navigationController: navigationController))
+    }
 
     var body: some Scene {
         WindowGroup {
-            NavigationControllerView(
-                root: .apple,
-                pageFactory: pageFactory,
-                sheetFactory: sheetFactory,
-                fullScreenCoverFactory: fullScreenCoverFactory
-            )
+           NavigationControllerView(coordinator: mainCoordinator, root: NavigationItem(content: AppleView()))
         }
     }
 }

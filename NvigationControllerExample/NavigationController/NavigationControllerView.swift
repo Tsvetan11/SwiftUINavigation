@@ -9,38 +9,27 @@ import SwiftUI
 
 struct NavigationControllerView: View {
 
-    @StateObject private var navigationController = NavigationController()
-    
-    private let root: Page
-    private let pageFactory: PageFactory
-    private let sheetFactory: SheetFactory
-    private let fullScreenCoverFactory: FullScreenCoverFactory
+    @ObservedObject private var coordinator: MainCoordinator
+    private let root: NavigationItem
 
-    init(
-        root: Page,
-        pageFactory: PageFactory,
-        sheetFactory: SheetFactory,
-        fullScreenCoverFactory: FullScreenCoverFactory
-    ) {
+    init(coordinator: MainCoordinator, root: NavigationItem) {
+        self._coordinator = ObservedObject(wrappedValue: coordinator)
         self.root = root
-        self.pageFactory = pageFactory
-        self.sheetFactory = sheetFactory
-        self.fullScreenCoverFactory = fullScreenCoverFactory
     }
 
     var body: some View {
-        NavigationStack(path: $navigationController.navigationPath) {
-            pageFactory.view(for: root)
-                .navigationDestination(for: Page.self) { page in
-                    pageFactory.view(for: page)
+        NavigationStack(path: $coordinator.navigationController.navigationPath) {
+            root.getView()
+                .navigationDestination(for: NavigationItem.self) { destination in
+                    destination.getView()
                 }
         }
-        .sheet(item: $navigationController.sheet) { sheet in
-            sheetFactory.view(for: sheet)
+        .sheet(item: $coordinator.navigationController.sheet) { sheet in
+            sheet.getView()
         }
-        .fullScreenCover(item: $navigationController.fullScreenCover) { fullScreenCover in
-            fullScreenCoverFactory.view(for: fullScreenCover)
+        .fullScreenCover(item: $coordinator.navigationController.fullScreenCover) { fullScreenCover in
+            fullScreenCover.getView()
         }
-        .environmentObject(navigationController)
+        .environmentObject(coordinator)
     }
 }

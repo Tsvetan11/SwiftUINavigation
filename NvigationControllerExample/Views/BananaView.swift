@@ -9,16 +9,16 @@ import SwiftUI
 
 struct BananaView: View {
 
-    @EnvironmentObject private var navigationController: NavigationController
+    @EnvironmentObject private var coordinator: MainCoordinator
 
     var body: some View {
         List {
             Button("Push 🥕") {
-                navigationController.push(.carrot)
+                coordinator.didTapCarrot()
             }
 
             Button("Pop") {
-                navigationController.pop()
+                coordinator.didTapBananaPop()
             }
         }
         .navigationTitle("🍌")

@@ -9,16 +9,16 @@ import SwiftUI
 
 struct CarrotView: View {
 
-    @EnvironmentObject private var navigationController: NavigationController
+    @EnvironmentObject private var coordinator: MainCoordinator
 
     var body: some View {
         List {
             Button("Pop") {
-                navigationController.pop()
+                coordinator.didTapCarrotPop()
             }
 
             Button("Pop to root") {
-                navigationController.popToRoot()
+                coordinator.didTapCarrotPopToRoot()
             }
         }
         .navigationTitle("🥕")

@@ -10,11 +10,11 @@ import SwiftUI
 final class NavigationController: ObservableObject {
 
     @Published var navigationPath = NavigationPath()
-    @Published var sheet: Sheet?
-    @Published var fullScreenCover: FullScreenCover?
+    @Published var sheet: NavigationItem?
+    @Published var fullScreenCover: NavigationItem?
 
-    func push(_ page: Page) {
-        navigationPath.append(page)
+    func push(_ item: NavigationItem) {
+        navigationPath.append(item)
     }
 
     func pop() {
@@ -25,7 +25,7 @@ final class NavigationController: ObservableObject {
         navigationPath.removeLast(navigationPath.count)
     }
 
-    func present(sheet: Sheet) {
+    func present(sheet: NavigationItem) {
         self.sheet = sheet
     }
 
@@ -33,7 +33,7 @@ final class NavigationController: ObservableObject {
         sheet = nil
     }
 
-    func present(fullScreenCover: FullScreenCover) {
+    func present(fullScreenCover: NavigationItem) {
         self.fullScreenCover = fullScreenCover
     }
 
