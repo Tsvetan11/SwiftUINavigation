@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NavigationControllerView: View {
 
-    @ObservedObject private var coordinator: MainCoordinator
+    @ObservedObject private var coordinator: Coordinator
     private let root: NavigationItem
 
     init(coordinator: MainCoordinator, root: NavigationItem) {
