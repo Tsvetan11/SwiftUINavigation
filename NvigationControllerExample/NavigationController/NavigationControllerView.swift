@@ -6,30 +6,56 @@
 //
 
 import SwiftUI
+import Combine
 
 struct NavigationControllerView: View {
 
     @ObservedObject private var coordinator: Coordinator
     private let root: NavigationItem
 
-    init(coordinator: MainCoordinator, root: NavigationItem) {
+    @State private var sheet: NavigationItem?
+    @State private var fullScreenCover: NavigationItem?
+
+    @State private var cancellables = Set<AnyCancellable>()
+    @State private var isOnLoad = true
+
+    init(coordinator: Coordinator, root: NavigationItem) {
         self._coordinator = ObservedObject(wrappedValue: coordinator)
         self.root = root
     }
 
     var body: some View {
         NavigationStack(path: $coordinator.navigationController.navigationPath) {
-            root.getView()
+            root.view
                 .navigationDestination(for: NavigationItem.self) { destination in
-                    destination.getView()
+                    destination.view
                 }
         }
-        .sheet(item: $coordinator.navigationController.sheet) { sheet in
-            sheet.getView()
+        .sheet(item: $sheet) { sheet in
+            sheet.view
         }
-        .fullScreenCover(item: $coordinator.navigationController.fullScreenCover) { fullScreenCover in
-            fullScreenCover.getView()
+        .fullScreenCover(item: $fullScreenCover) { fullScreenCover in
+            fullScreenCover.view
         }
-        .environmentObject(coordinator)
+        .onAppear {
+            guard isOnLoad else { return }
+
+            coordinator.navigationController.sheet
+                .sink { sheet in
+                    guard self.sheet?.id != sheet?.id else { return }
+                    self.sheet = sheet
+                }
+                .store(in: &cancellables)
+
+            coordinator.navigationController.fullScreenCover
+                .sink { fullScreenCover in
+                    guard self.fullScreenCover?.id != fullScreenCover?.id else { return }
+                    self.fullScreenCover = fullScreenCover
+                }
+                .store(in: &cancellables)
+        }
+        .onDisappear {
+            cancellables.removeAll()
+        }
     }
 }

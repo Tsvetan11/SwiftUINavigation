@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 final class NavigationController: ObservableObject {
 
     @Published var navigationPath = NavigationPath()
-    @Published var sheet: NavigationItem?
-    @Published var fullScreenCover: NavigationItem?
+    
+    private(set) var sheet = PassthroughSubject<NavigationItem?, Never>()
+    private(set) var fullScreenCover = PassthroughSubject<NavigationItem?, Never>()
 
     func push(_ item: NavigationItem) {
         navigationPath.append(item)
@@ -26,18 +28,18 @@ final class NavigationController: ObservableObject {
     }
 
     func present(sheet: NavigationItem) {
-        self.sheet = sheet
+        self.sheet.send(sheet)
     }
 
     func dismissSheet() {
-        sheet = nil
+        sheet.send(nil)
     }
 
     func present(fullScreenCover: NavigationItem) {
-        self.fullScreenCover = fullScreenCover
+        self.fullScreenCover.send(fullScreenCover)
     }
 
     func dismissFullScreenCover() {
-        fullScreenCover = nil
+        fullScreenCover.send(nil)
     }
 }

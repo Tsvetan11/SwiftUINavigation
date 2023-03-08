@@ -16,9 +16,11 @@
 		F55D001F29B3452000FEAA5D /* NavigationControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D001E29B3452000FEAA5D /* NavigationControllerView.swift */; };
 		F55D002129B3459500FEAA5D /* AppleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D002029B3459500FEAA5D /* AppleView.swift */; };
 		F55D002329B3462F00FEAA5D /* BananaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D002229B3462F00FEAA5D /* BananaView.swift */; };
-		F55D002529B3467400FEAA5D /* CarrotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D002429B3467400FEAA5D /* CarrotView.swift */; };
 		F55D002729B346A600FEAA5D /* LemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D002629B346A600FEAA5D /* LemonView.swift */; };
 		F55D002929B346D200FEAA5D /* OliveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55D002829B346D200FEAA5D /* OliveView.swift */; };
+		F5BE5BD729B8BC330099CB2A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE5BD629B8BC330099CB2A /* MainCoordinator.swift */; };
+		F5BE5BDB29B8BC690099CB2A /* SheetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE5BDA29B8BC690099CB2A /* SheetCoordinator.swift */; };
+		F5BE5BDD29B8BC760099CB2A /* FullScreenCoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BE5BDC29B8BC760099CB2A /* FullScreenCoverCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +34,11 @@
 		F55D001E29B3452000FEAA5D /* NavigationControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerView.swift; sourceTree = "<group>"; };
 		F55D002029B3459500FEAA5D /* AppleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleView.swift; sourceTree = "<group>"; };
 		F55D002229B3462F00FEAA5D /* BananaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BananaView.swift; sourceTree = "<group>"; };
-		F55D002429B3467400FEAA5D /* CarrotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrotView.swift; sourceTree = "<group>"; };
 		F55D002629B346A600FEAA5D /* LemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LemonView.swift; sourceTree = "<group>"; };
 		F55D002829B346D200FEAA5D /* OliveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OliveView.swift; sourceTree = "<group>"; };
+		F5BE5BD629B8BC330099CB2A /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		F5BE5BDA29B8BC690099CB2A /* SheetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetCoordinator.swift; sourceTree = "<group>"; };
+		F5BE5BDC29B8BC760099CB2A /* FullScreenCoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenCoverCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				F518C97429B3A58B0034FD6A /* Coordinator.swift */,
+				F5BE5BD929B8BC5A0099CB2A /* FullScreenCover */,
+				F5BE5BD829B8BC4A0099CB2A /* Sheet */,
+				F5BE5BD529B8BC230099CB2A /* Main */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -108,7 +115,6 @@
 			children = (
 				F55D002029B3459500FEAA5D /* AppleView.swift */,
 				F55D002229B3462F00FEAA5D /* BananaView.swift */,
-				F55D002429B3467400FEAA5D /* CarrotView.swift */,
 				F55D002629B346A600FEAA5D /* LemonView.swift */,
 				F55D002829B346D200FEAA5D /* OliveView.swift */,
 			);
@@ -121,6 +127,30 @@
 				F518C97129B397EF0034FD6A /* NavigationItem.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		F5BE5BD529B8BC230099CB2A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F5BE5BD629B8BC330099CB2A /* MainCoordinator.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F5BE5BD829B8BC4A0099CB2A /* Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				F5BE5BDA29B8BC690099CB2A /* SheetCoordinator.swift */,
+			);
+			path = Sheet;
+			sourceTree = "<group>";
+		};
+		F5BE5BD929B8BC5A0099CB2A /* FullScreenCover */ = {
+			isa = PBXGroup;
+			children = (
+				F5BE5BDC29B8BC760099CB2A /* FullScreenCoverCoordinator.swift */,
+			);
+			path = FullScreenCover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,13 +226,15 @@
 				F55D000D29B3449300FEAA5D /* NvigationControllerExampleApp.swift in Sources */,
 				F518C97229B397EF0034FD6A /* NavigationItem.swift in Sources */,
 				F518C97529B3A58B0034FD6A /* Coordinator.swift in Sources */,
+				F5BE5BD729B8BC330099CB2A /* MainCoordinator.swift in Sources */,
 				F55D001F29B3452000FEAA5D /* NavigationControllerView.swift in Sources */,
 				F55D001D29B3450100FEAA5D /* NavigationController.swift in Sources */,
+				F5BE5BDD29B8BC760099CB2A /* FullScreenCoverCoordinator.swift in Sources */,
 				F55D002129B3459500FEAA5D /* AppleView.swift in Sources */,
 				F55D002929B346D200FEAA5D /* OliveView.swift in Sources */,
 				F55D002329B3462F00FEAA5D /* BananaView.swift in Sources */,
 				F55D002729B346A600FEAA5D /* LemonView.swift in Sources */,
-				F55D002529B3467400FEAA5D /* CarrotView.swift in Sources */,
+				F5BE5BDB29B8BC690099CB2A /* SheetCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

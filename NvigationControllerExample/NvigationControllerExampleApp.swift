@@ -22,7 +22,26 @@ struct NvigationControllerExampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-           NavigationControllerView(coordinator: mainCoordinator, root: NavigationItem(content: AppleView()))
+           NavigationControllerView(
+            coordinator: mainCoordinator,
+            root: NavigationItem(
+                content: makeRootView()
+            )
+           )
         }
+    }
+
+    func makeRootView() -> some View {
+        AppleView(
+            didTapBanana: {
+                mainCoordinator.didTapBanana()
+            },
+            didTapLemon: {
+                mainCoordinator.didTapLemon()
+            },
+            didTapOlive: {
+                mainCoordinator.didTapOlive()
+            }
+        )
     }
 }

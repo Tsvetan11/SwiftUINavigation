@@ -9,12 +9,12 @@ import SwiftUI
 
 struct OliveView: View {
 
-    @EnvironmentObject private var coordinator: MainCoordinator
+    let onDismiss: () -> Void
 
     var body: some View {
         List {
             Button("Dismiss") {
-                coordinator.didTapOliveDismiss()
+                onDismiss()
             }
         }
         .navigationTitle("🫒")

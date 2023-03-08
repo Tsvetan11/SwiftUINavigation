@@ -16,43 +16,11 @@ class Coordinator: ObservableObject {
     init(navigationController: NavigationController) {
         self.navigationController = navigationController
     }
-}
 
-class MainCoordinator: Coordinator {
+    func start() {}
 
-    func didTapBanana() {
-        navigationController.push(NavigationItem(content: BananaView()))
-    }
-
-    func didTapLemon() {
-        navigationController.present(sheet: NavigationItem(content: LemonView()))
-    }
-
-    func didTapOlive() {
-        navigationController.present(fullScreenCover: NavigationItem(content: OliveView()))
-    }
-
-    func didTapCarrot() {
-        navigationController.push(NavigationItem(content: CarrotView()))
-    }
-
-    func didTapBananaPop() {
-        navigationController.pop()
-    }
-
-    func didTapCarrotPop() {
-        navigationController.pop()
-    }
-
-    func didTapCarrotPopToRoot() {
-        navigationController.popToRoot()
-    }
-
-    func didTapLemonDismiss() {
-        navigationController.dismissSheet()
-    }
-
-    func didTapOliveDismiss() {
-        navigationController.dismissFullScreenCover()
+    func childCoordinatorDidFinish(_ childCoordinator: Coordinator) {
+        guard let index = childCoordinators.firstIndex(where: { $0 === childCoordinator }) else { return }
+        childCoordinators.remove(at: index)
     }
 }
